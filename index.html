@@ -351,14 +351,14 @@ footer{background:#01082e;padding:60px 64px 32px;}
     <span class="nav-logo-text">FAIDA <span>Capital</span></span>
   </div>
   <div class="nav-right">
-    <a class="nav-link" href="#platform-anchor" data-en="Platform" data-fr="Plateforme">Platform</a>
-    <a class="nav-link" href="#portfolio-anchor" data-en="Portfolio" data-fr="Portefeuille">Portfolio</a>
-    <a class="nav-link" href="#expertise-anchor" data-en="Expertise" data-fr="Expertise">Expertise</a>
+    <a class="nav-link" href="#" onclick="event.preventDefault();showPage('home');document.getElementById('platform-anchor').scrollIntoView({behavior:'smooth'});" data-en="Platform" data-fr="Plateforme">Platform</a>
+    <a class="nav-link" href="#" onclick="event.preventDefault();showPage('home');document.getElementById('portfolio-anchor').scrollIntoView({behavior:'smooth'});" data-en="Portfolio" data-fr="Portefeuille">Portfolio</a>
+    <a class="nav-link" href="#" onclick="event.preventDefault();showPage('home');document.getElementById('expertise-anchor').scrollIntoView({behavior:'smooth'});" data-en="Expertise" data-fr="Expertise">Expertise</a>
     <div class="nav-lang">
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('fr')">FR</button>
     </div>
-    <button class="nav-cta" onclick="document.getElementById('cta-anchor').scrollIntoView({behavior:'smooth'})" data-en="Get in touch" data-fr="Nous contacter">Get in touch</button>
+    <button class="nav-cta" onclick="showPage('home');document.getElementById('cta-anchor').scrollIntoView({behavior:'smooth'});" data-en="Get in touch" data-fr="Nous contacter">Get in touch</button>
   </div>
 </nav>
 
