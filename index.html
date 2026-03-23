@@ -333,6 +333,81 @@ footer{background:#01082e;padding:60px 64px 32px;}
 .acv2-cta{font-size:12px;font-weight:500;color:var(--gold);letter-spacing:0.04em;transition:color 0.2s;}
 .asset-card-v2:hover .acv2-cta{color:var(--gold-light);}
 
+/* ——— HAMBURGER / MOBILE MENU ——— */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px 4px;margin-left:8px;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,0.8);transition:all 0.25s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(2,13,82,0.99);backdrop-filter:blur(16px);z-index:98;padding:8px 24px 28px;flex-direction:column;border-top:1px solid rgba(255,255,255,0.08);}
+.mobile-menu.open{display:flex;}
+.mob-link{color:rgba(255,255,255,0.72);font-size:15px;font-weight:400;letter-spacing:0.04em;padding:15px 0;border-bottom:1px solid rgba(255,255,255,0.07);text-decoration:none;cursor:pointer;transition:color 0.2s;background:none;border-left:none;border-right:none;border-top:none;font-family:'Kanit',sans-serif;text-align:left;width:100%;}
+.mob-link:last-of-type{border-bottom:none;}
+.mob-link:hover{color:var(--white);}
+.mob-lang{display:flex;gap:0;margin-top:20px;border:1px solid rgba(255,255,255,0.18);border-radius:2px;overflow:hidden;width:fit-content;}
+.mob-cta{margin-top:16px;background:var(--gold);color:var(--navy);border:none;padding:14px;font-family:'Kanit',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;cursor:pointer;width:100%;transition:background 0.2s;}
+.mob-cta:hover{background:var(--gold-light);}
+
+/* ——— RESPONSIVE ——— */
+@media(max-width:768px){
+  nav{padding:0 20px;height:64px;}
+  .nav-right .nav-link,.nav-right .nav-cta{display:none;}
+  .nav-hamburger{display:flex;}
+
+  .hero{padding:90px 20px 56px;height:auto;min-height:auto;}
+  .hero-right{display:none;}
+  .hero-content{max-width:100%;}
+  .hero-scroll{left:20px;bottom:20px;}
+
+  .positioning-band{padding:0 20px;}
+  .positioning-inner{grid-template-columns:1fr;}
+  .pos-item{padding:28px 0 !important;padding-left:0 !important;padding-right:0 !important;}
+  .pos-item:not(:last-child){border-right:none;border-bottom:1px solid var(--border);}
+
+  .section{padding:60px 20px;}
+  .about-layout{grid-template-columns:1fr;gap:40px;}
+  .kpi-card:nth-child(even){margin-top:0;}
+
+  .expertise-section{padding:60px 20px;}
+  .exp-header{grid-template-columns:1fr;gap:20px;margin-bottom:36px;}
+  .exp-grid{grid-template-columns:1fr;}
+  .flow-section{grid-template-columns:1fr;gap:28px;}
+  .flow-steps{grid-template-columns:1fr;gap:8px;}
+  .flow-arrow{display:none;}
+
+  .assets-section{padding:60px 20px;}
+  .assets-grid{grid-template-columns:1fr;}
+  .asset-card-v2{grid-template-columns:1fr;}
+  .acv2-photo{min-height:220px;}
+
+  .cta-section{padding:60px 20px;}
+  .cta-grid{grid-template-columns:1fr;}
+
+  .newsletter{padding:60px 20px;}
+  .nl-form{flex-direction:column;}
+  .nl-btn{width:100%;padding:16px;}
+
+  footer{padding:48px 20px 28px;}
+  .ft-top{grid-template-columns:1fr 1fr;gap:28px;}
+  .ft-bottom{flex-direction:column;gap:14px;text-align:center;}
+
+  .form-hero{padding:56px 20px 36px;}
+  .form-body{padding:32px 16px 60px;}
+  .form-card{padding:24px 16px;}
+  .fr2{grid-template-columns:1fr;}
+
+  .proj-hero{padding:56px 20px 36px;}
+  .proj-body-wrap{padding:28px 16px;}
+  .proj-body-inner{grid-template-columns:1fr;gap:28px;}
+  .proj-gallery-main,.proj-gallery-single{height:220px;}
+  .proj-gallery-row img{height:120px;}
+}
+
+@media(max-width:480px){
+  .ft-top{grid-template-columns:1fr;}
+  .kpi-mosaic{grid-template-columns:1fr;}
+}
+
 </style>
 </head>
 <body>
@@ -360,7 +435,19 @@ footer{background:#01082e;padding:60px 64px 32px;}
     </div>
     <button class="nav-cta" onclick="showPage('home');document.getElementById('cta-anchor').scrollIntoView({behavior:'smooth'});" data-en="Get in touch" data-fr="Nous contacter">Get in touch</button>
   </div>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mob-link" onclick="closeMobileMenu();showPage('home');document.getElementById('platform-anchor').scrollIntoView({behavior:'smooth'});" data-en="Platform" data-fr="Plateforme">Platform</button>
+  <button class="mob-link" onclick="closeMobileMenu();showPage('home');document.getElementById('portfolio-anchor').scrollIntoView({behavior:'smooth'});" data-en="Portfolio" data-fr="Portefeuille">Portfolio</button>
+  <button class="mob-link" onclick="closeMobileMenu();showPage('home');document.getElementById('expertise-anchor').scrollIntoView({behavior:'smooth'});" data-en="Expertise" data-fr="Expertise">Expertise</button>
+  <div class="mob-lang">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+  <button class="mob-cta" onclick="closeMobileMenu();showPage('home');document.getElementById('cta-anchor').scrollIntoView({behavior:'smooth'});" data-en="Get in touch" data-fr="Nous contacter">Get in touch</button>
+</div>
 
 <!-- ================================================================ HOME -->
 <div id="page-home" class="page active">
@@ -1153,7 +1240,9 @@ function showProject(id){
   showPage('project-'+id);
 }
 
-function showPage(p){document.querySelectorAll('.page').forEach(function(e){e.classList.remove('active');});var t=document.getElementById('page-'+p);if(t){t.classList.add('active');window.scrollTo(0,0);}}
+function toggleMobileMenu(){var m=document.getElementById('mobile-menu'),h=document.getElementById('nav-hamburger');m.classList.toggle('open');h.classList.toggle('open');}
+function closeMobileMenu(){var m=document.getElementById('mobile-menu'),h=document.getElementById('nav-hamburger');if(m){m.classList.remove('open');}if(h){h.classList.remove('open');}}
+function showPage(p){closeMobileMenu();document.querySelectorAll('.page').forEach(function(e){e.classList.remove('active');});var t=document.getElementById('page-'+p);if(t){t.classList.add('active');window.scrollTo(0,0);}}
 function setLang(l){
   L=l;
   document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.textContent.trim()===l.toUpperCase());});
