@@ -1286,9 +1286,7 @@ function showSuccess(type){
     mine:{en:['Asset submitted','Your project has been transmitted to our team. We will respond within 5 business days if it matches our pipeline criteria.'],fr:['Actif soumis','Votre projet a été transmis à notre équipe. Nous vous répondrons sous 5 jours ouvrés s\'il correspond à nos critères de pipeline.']},
     newsletter:{en:['Subscribed','Welcome to Faida Insights. You will receive our next bi-monthly analysis directly in your inbox.'],fr:['Abonnement confirmé','Bienvenue dans Faida Insights. Vous recevrez notre prochaine analyse bi-mensuelle directement dans votre boîte mail.']}
   };
-  var m=msgs[type]||msgs.newsletter;var lang=L==='fr'?1:0;
-  if(h)h.textContent=m[0].split('|')[lang]||m[0];
-  if(p)p.textContent=m[1].split('|')[lang]||m[1];
+  var m=msgs[type]||msgs.newsletter;
   h.textContent=(L==='fr'?m.fr:m.en)[0];
   p.textContent=(L==='fr'?m.fr:m.en)[1];
   if(b)b.textContent=L==='fr'?'Retour à l\'accueil':'Back to home';
