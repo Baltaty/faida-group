@@ -885,7 +885,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
       <p class="nl-sub" data-en="Analysis on African critical mineral markets, deal flow, offtake dynamics and capital structuring trends. Bi-monthly. EN / FR." data-fr="Analyses sur les marchés des minéraux critiques africains, deal flow, dynamiques d'offtake et tendances de structuration. Bi-mensuel. EN / FR.">Analysis on African critical mineral markets, deal flow, offtake dynamics and capital structuring trends. Bi-monthly. EN / FR.</p>
       <div class="nl-form">
         <input type="email" class="nl-input" id="nl-input" data-placeholder-en="your@email.com" data-placeholder-fr="votre@email.com" placeholder="your@email.com"/>
-        <button class="nl-btn" onclick="showSuccess('newsletter')" data-en="Subscribe" data-fr="S'abonner">Subscribe</button>
+        <button class="nl-btn" onclick="submitForm('newsletter')" data-en="Subscribe" data-fr="S'abonner">Subscribe</button>
       </div>
       <p class="nl-note" data-en="No spam. Unsubscribe in one click." data-fr="Pas de spam. Désabonnement en 1 clic.">No spam. Unsubscribe in one click.</p>
     </div>
@@ -947,15 +947,15 @@ footer{background:#01082e;padding:60px 64px 32px;}
     <div class="form-body-inner">
       <div class="form-card">
         <div class="fr2">
-          <div class="fg"><label class="fl" data-en="First name" data-fr="Prénom">First name</label><input type="text" class="fi" placeholder="Jean"/></div>
-          <div class="fg"><label class="fl" data-en="Last name" data-fr="Nom">Last name</label><input type="text" class="fi" placeholder="Dupont"/></div>
+          <div class="fg"><label class="fl" data-en="First name" data-fr="Prénom">First name</label><input id="inv-first" type="text" class="fi" placeholder="Jean"/></div>
+          <div class="fg"><label class="fl" data-en="Last name" data-fr="Nom">Last name</label><input id="inv-last" type="text" class="fi" placeholder="Dupont"/></div>
         </div>
-        <div class="fg"><label class="fl" data-en="Professional email" data-fr="Email professionnel">Professional email</label><input type="email" class="fi" placeholder="j.dupont@fund.com"/></div>
+        <div class="fg"><label class="fl" data-en="Professional email" data-fr="Email professionnel">Professional email</label><input id="inv-email" type="email" class="fi" placeholder="j.dupont@fund.com"/></div>
         <div class="fr2">
-          <div class="fg"><label class="fl" data-en="Organization" data-fr="Organisation">Organization</label><input type="text" class="fi" data-placeholder-en="Fund / Family Office" data-placeholder-fr="Fonds / Family Office" placeholder="Fund / Family Office"/></div>
+          <div class="fg"><label class="fl" data-en="Organization" data-fr="Organisation">Organization</label><input id="inv-org" type="text" class="fi" data-placeholder-en="Fund / Family Office" data-placeholder-fr="Fonds / Family Office" placeholder="Fund / Family Office"/></div>
           <div class="fg">
             <label class="fl" data-en="Investor profile" data-fr="Profil investisseur">Investor profile</label>
-            <select class="fs">
+            <select id="inv-profile" class="fs">
               <option value="" data-en="Select..." data-fr="Sélectionner...">Select...</option>
               <option data-en="Institutional Investor" data-fr="Investisseur Institutionnel">Institutional Investor</option>
               <option data-en="Family Office" data-fr="Family Office">Family Office</option>
@@ -972,7 +972,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
         <div class="fr2">
           <div class="fg">
             <label class="fl" data-en="Investment ticket" data-fr="Ticket d'investissement">Investment ticket</label>
-            <select class="fs">
+            <select id="inv-ticket" class="fs">
               <option value="" data-en="Select a range..." data-fr="Sélectionner...">Select a range...</option>
               <option>$250K – $500K</option><option>$500K – $1M</option><option>$1M – $5M</option>
               <option>$5M – $10M</option><option>$10M – $25M</option><option>$25M+</option>
@@ -980,7 +980,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
           </div>
           <div class="fg">
             <label class="fl" data-en="Country / Region" data-fr="Pays / Région">Country / Region</label>
-            <select class="fs">
+            <select id="inv-country" class="fs">
               <option value="" data-en="Select..." data-fr="Sélectionner...">Select...</option>
               <optgroup label="Middle East"><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option><option>Bahrain</option><option>Oman</option></optgroup>
               <optgroup label="Europe"><option>United Kingdom</option><option>France</option><option>Germany</option><option>Switzerland</option><option>Netherlands</option><option>Luxembourg</option><option>Belgium</option><option>Sweden</option><option>Norway</option><option>Italy</option><option>Spain</option><option>Portugal</option></optgroup>
@@ -993,7 +993,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
         </div>
         <div class="fg">
           <label class="fl" data-en="Minerals of interest" data-fr="Minéraux d'intérêt">Minerals of interest</label>
-          <div class="tags-wrap">
+          <div id="inv-minerals-wrap" class="tags-wrap">
             <span class="tp on" onclick="this.classList.toggle('on')">Lithium</span>
             <span class="tp" onclick="this.classList.toggle('on')">Graphite</span>
             <span class="tp" onclick="this.classList.toggle('on')">Cobalt</span>
@@ -1004,7 +1004,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
         </div>
         <div class="fg">
           <label class="fl" data-en="Investment geographies" data-fr="Géographies d'investissement">Investment geographies</label>
-          <div class="tags-wrap">
+          <div id="inv-geos-wrap" class="tags-wrap">
             <span class="tp on" onclick="this.classList.toggle('on')">Nigeria</span>
             <span class="tp" onclick="this.classList.toggle('on')">Ghana</span>
             <span class="tp" onclick="this.classList.toggle('on')">Mali</span>
@@ -1017,8 +1017,8 @@ footer{background:#01082e;padding:60px 64px 32px;}
           </div>
         </div>
         <div class="fdiv"></div>
-        <div class="fg"><label class="fl" data-en="Message (optional)" data-fr="Message (optionnel)">Message (optional)</label><textarea class="fta" data-placeholder-en="Describe your investment mandate or ask a preliminary question..." data-placeholder-fr="Décrivez votre mandat d'investissement ou posez une question préliminaire..." placeholder="Describe your investment mandate or ask a preliminary question..."></textarea></div>
-        <button class="form-submit fs-navy" onclick="showSuccess('investor')" data-en="Submit expression of interest →" data-fr="Soumettre ma manifestation d'intérêt →">Submit expression of interest →</button>
+        <div class="fg"><label class="fl" data-en="Message (optional)" data-fr="Message (optionnel)">Message (optional)</label><textarea id="inv-message" class="fta" data-placeholder-en="Describe your investment mandate or ask a preliminary question..." data-placeholder-fr="Décrivez votre mandat d'investissement ou posez une question préliminaire..." placeholder="Describe your investment mandate or ask a preliminary question..."></textarea></div>
+        <button class="form-submit fs-navy" onclick="submitForm('investor')" data-en="Submit expression of interest →" data-fr="Soumettre ma manifestation d'intérêt →">Submit expression of interest →</button>
         <p class="form-note" data-en="Strictly confidential. Response within 48 business hours." data-fr="Strictement confidentiel. Réponse sous 48h ouvrées.">Strictly confidential. Response within 48 business hours.</p>
       </div>
     </div>
@@ -1040,15 +1040,15 @@ footer{background:#01082e;padding:60px 64px 32px;}
       <div class="form-card">
         <div class="form-note-offtaker" data-en="Offtake agreements are structured in coordination with Faida Capital's active project pipeline. We work with battery manufacturers, refiners, EV producers, traders and industrial buyers to design bespoke supply solutions." data-fr="Les accords d'offtake sont structurés en coordination avec le pipeline de projets actif de Faida Capital. Nous travaillons avec des fabricants de batteries, raffineurs, constructeurs automobiles, traders et acheteurs industriels pour concevoir des solutions d'approvisionnement sur mesure.">Offtake agreements are structured in coordination with Faida Capital's active project pipeline. We work with battery manufacturers, refiners, EV producers, traders and industrial buyers to design bespoke supply solutions.</div>
         <div class="fr2">
-          <div class="fg"><label class="fl" data-en="First name" data-fr="Prénom">First name</label><input type="text" class="fi" placeholder=""/></div>
-          <div class="fg"><label class="fl" data-en="Last name" data-fr="Nom">Last name</label><input type="text" class="fi" placeholder=""/></div>
+          <div class="fg"><label class="fl" data-en="First name" data-fr="Prénom">First name</label><input id="off-first" type="text" class="fi" placeholder=""/></div>
+          <div class="fg"><label class="fl" data-en="Last name" data-fr="Nom">Last name</label><input id="off-last" type="text" class="fi" placeholder=""/></div>
         </div>
-        <div class="fg"><label class="fl" data-en="Professional email" data-fr="Email professionnel">Professional email</label><input type="email" class="fi" placeholder=""/></div>
+        <div class="fg"><label class="fl" data-en="Professional email" data-fr="Email professionnel">Professional email</label><input id="off-email" type="email" class="fi" placeholder=""/></div>
         <div class="fr2">
-          <div class="fg"><label class="fl" data-en="Company" data-fr="Entreprise">Company</label><input type="text" class="fi" placeholder=""/></div>
+          <div class="fg"><label class="fl" data-en="Company" data-fr="Entreprise">Company</label><input id="off-company" type="text" class="fi" placeholder=""/></div>
           <div class="fg">
             <label class="fl" data-en="Company type" data-fr="Type d'entreprise">Company type</label>
-            <select class="fs">
+            <select id="off-type" class="fs">
               <option value="" data-en="Select..." data-fr="Sélectionner...">Select...</option>
               <option data-en="Battery manufacturer" data-fr="Fabricant de batteries">Battery manufacturer</option>
               <option data-en="EV / Automotive" data-fr="EV / Automobile">EV / Automotive</option>
@@ -1062,7 +1062,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
         </div>
         <div class="fg">
           <label class="fl" data-en="Minerals needed" data-fr="Minéraux recherchés">Minerals needed</label>
-          <div class="tags-wrap">
+          <div id="off-minerals-wrap" class="tags-wrap">
             <span class="tp" onclick="this.classList.toggle('on')">Lithium</span>
             <span class="tp on" onclick="this.classList.toggle('on')">Graphite</span>
             <span class="tp" onclick="this.classList.toggle('on')">Cobalt</span>
@@ -1074,7 +1074,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
         <div class="fr2">
           <div class="fg">
             <label class="fl" data-en="Volume range (annual)" data-fr="Volume annuel">Volume range (annual)</label>
-            <select class="fs">
+            <select id="off-volume" class="fs">
               <option value="" data-en="Select..." data-fr="Sélectionner...">Select...</option>
               <option data-en="< 1,000 tonnes" data-fr="< 1 000 tonnes">< 1,000 tonnes</option>
               <option data-en="1,000 – 10,000 tonnes" data-fr="1 000 – 10 000 tonnes">1,000 – 10,000 tonnes</option>
@@ -1084,7 +1084,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
           </div>
           <div class="fg">
             <label class="fl" data-en="Desired offtake horizon" data-fr="Horizon d'offtake souhaité">Desired offtake horizon</label>
-            <select class="fs">
+            <select id="off-horizon" class="fs">
               <option value="" data-en="Select..." data-fr="Sélectionner...">Select...</option>
               <option data-en="1–2 years" data-fr="1–2 ans">1–2 years</option>
               <option data-en="3–5 years" data-fr="3–5 ans">3–5 years</option>
@@ -1095,7 +1095,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
         </div>
         <div class="fg">
           <label class="fl" data-en="Country / Region" data-fr="Pays / Région">Country / Region</label>
-          <select class="fs">
+          <select id="off-country" class="fs">
             <option value="" data-en="Select..." data-fr="Sélectionner...">Select...</option>
             <optgroup label="Middle East"><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option></optgroup>
             <optgroup label="Europe"><option>United Kingdom</option><option>France</option><option>Germany</option><option>Switzerland</option><option>Netherlands</option><option>Belgium</option><option>Sweden</option><option>Norway</option><option>Italy</option><option>Spain</option></optgroup>
@@ -1106,8 +1106,8 @@ footer{background:#01082e;padding:60px 64px 32px;}
           </select>
         </div>
         <div class="fdiv"></div>
-        <div class="fg"><label class="fl" data-en="Sourcing requirements & context" data-fr="Exigences d'approvisionnement & contexte">Sourcing requirements & context</label><textarea class="fta" data-placeholder-en="Describe your sourcing needs, product specifications, and any constraints (certifications, sustainability requirements, delivery terms)..." data-placeholder-fr="Décrivez vos besoins d'approvisionnement, spécifications produit, et contraintes éventuelles (certifications, exigences ESG, conditions de livraison)..." placeholder="Describe your sourcing needs, product specifications, and any constraints..."></textarea></div>
-        <button class="form-submit fs-gold" onclick="showSuccess('offtaker')" data-en="Submit offtake enquiry →" data-fr="Soumettre ma demande d'offtake →">Submit offtake enquiry →</button>
+        <div class="fg"><label class="fl" data-en="Sourcing requirements & context" data-fr="Exigences d'approvisionnement & contexte">Sourcing requirements & context</label><textarea id="off-context" class="fta" data-placeholder-en="Describe your sourcing needs, product specifications, and any constraints (certifications, sustainability requirements, delivery terms)..." data-placeholder-fr="Décrivez vos besoins d'approvisionnement, spécifications produit, et contraintes éventuelles (certifications, exigences ESG, conditions de livraison)..." placeholder="Describe your sourcing needs, product specifications, and any constraints..."></textarea></div>
+        <button class="form-submit fs-gold" onclick="submitForm('offtaker')" data-en="Submit offtake enquiry →" data-fr="Soumettre ma demande d'offtake →">Submit offtake enquiry →</button>
         <p class="form-note" data-en="Strictly confidential. Our structuring team will respond within 5 business days." data-fr="Strictement confidentiel. Notre équipe de structuration répondra sous 5 jours ouvrés.">Strictly confidential. Our structuring team will respond within 5 business days.</p>
       </div>
     </div>
@@ -1134,10 +1134,10 @@ footer{background:#01082e;padding:60px 64px 32px;}
       <div class="form-card">
         <div class="f-sec-lbl" data-en="Asset Information" data-fr="Informations sur l'actif">Asset Information</div>
         <div class="fr2" style="margin-top:20px;">
-          <div class="fg"><label class="fl" data-en="Project name" data-fr="Nom du projet">Project name</label><input type="text" class="fi" data-placeholder-en="e.g. Kayes Graphite Project" data-placeholder-fr="Ex: Projet Graphite Kayes" placeholder="e.g. Kayes Graphite Project"/></div>
+          <div class="fg"><label class="fl" data-en="Project name" data-fr="Nom du projet">Project name</label><input id="mine-project" type="text" class="fi" data-placeholder-en="e.g. Kayes Graphite Project" data-placeholder-fr="Ex: Projet Graphite Kayes" placeholder="e.g. Kayes Graphite Project"/></div>
           <div class="fg">
             <label class="fl" data-en="Asset type" data-fr="Type d'actif">Asset type</label>
-            <select class="fs">
+            <select id="mine-asset-type" class="fs">
               <option value="" data-en="Select..." data-fr="Sélectionner...">Select...</option>
               <option data-en="Mine in production" data-fr="Mine en production">Mine in production</option>
               <option data-en="Development project" data-fr="Projet en développement">Development project</option>
@@ -1150,7 +1150,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
         <div class="fr2">
           <div class="fg">
             <label class="fl" data-en="Country" data-fr="Pays">Country</label>
-            <select class="fs">
+            <select id="mine-country" class="fs">
               <option value="" data-en="Select..." data-fr="Sélectionner...">Select...</option>
               <optgroup label="West Africa (Priority)"><option>Nigeria</option><option>Ghana</option><option>Mali</option><option data-en="Guinea" data-fr="Guinée">Guinea</option><option data-en="Senegal" data-fr="Sénégal">Senegal</option><option data-en="Côte d'Ivoire" data-fr="Côte d'Ivoire">Côte d'Ivoire</option><option data-en="Burkina Faso" data-fr="Burkina Faso">Burkina Faso</option><option data-en="Sierra Leone" data-fr="Sierra Leone">Sierra Leone</option><option data-en="Liberia" data-fr="Liberia">Liberia</option><option data-en="Guinea-Bissau" data-fr="Guinée-Bissau">Guinea-Bissau</option><option data-en="Togo" data-fr="Togo">Togo</option><option data-en="Benin" data-fr="Bénin">Benin</option><option data-en="Niger" data-fr="Niger">Niger</option></optgroup>
               <optgroup label="Central Africa"><option>DRC</option><option>Cameroon</option><option>Gabon</option><option>Congo</option><option>Chad</option><option>CAR</option></optgroup>
@@ -1159,11 +1159,11 @@ footer{background:#01082e;padding:60px 64px 32px;}
               <optgroup label="North Africa"><option>Morocco</option><option>Egypt</option><option>Algeria</option><option>Tunisia</option></optgroup>
             </select>
           </div>
-          <div class="fg"><label class="fl" data-en="Region / State" data-fr="Région / État">Region / State</label><input type="text" class="fi" data-placeholder-en="e.g. Oyo State" data-placeholder-fr="Ex: État d'Oyo" placeholder="e.g. Oyo State"/></div>
+          <div class="fg"><label class="fl" data-en="Region / State" data-fr="Région / État">Region / State</label><input id="mine-region" type="text" class="fi" data-placeholder-en="e.g. Oyo State" data-placeholder-fr="Ex: État d'Oyo" placeholder="e.g. Oyo State"/></div>
         </div>
         <div class="fg">
           <label class="fl" data-en="Minerals" data-fr="Minéraux">Minerals</label>
-          <div class="tags-wrap">
+          <div id="mine-minerals-wrap" class="tags-wrap">
             <span class="tp" onclick="this.classList.toggle('on')">Lithium</span>
             <span class="tp on" onclick="this.classList.toggle('on')">Graphite</span>
             <span class="tp" onclick="this.classList.toggle('on')">Cobalt</span>
@@ -1179,7 +1179,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
         <div class="fr2" style="margin-top:20px;">
           <div class="fg">
             <label class="fl" data-en="Capital sought" data-fr="Capital recherché">Capital sought</label>
-            <select class="fs">
+            <select id="mine-capital" class="fs">
               <option value="" data-en="Estimated amount..." data-fr="Montant estimé...">Estimated amount...</option>
               <option>< $1M</option><option>$1M – $5M</option><option>$5M – $15M</option>
               <option>$15M – $30M</option><option>$30M – $50M</option><option>> $50M</option>
@@ -1187,7 +1187,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
           </div>
           <div class="fg">
             <label class="fl" data-en="Use of funds" data-fr="Usage des fonds">Use of funds</label>
-            <select class="fs">
+            <select id="mine-use" class="fs">
               <option value="" data-en="Purpose..." data-fr="Objet...">Purpose...</option>
               <option data-en="Exploration & development" data-fr="Exploration & développement">Exploration & development</option>
               <option data-en="Infrastructure & equipment" data-fr="Infrastructure & équipement">Infrastructure & equipment</option>
@@ -1199,7 +1199,7 @@ footer{background:#01082e;padding:60px 64px 32px;}
         </div>
         <div class="fg">
           <label class="fl" data-en="Permit status" data-fr="Statut des permis">Permit status</label>
-          <select class="fs">
+          <select id="mine-permit" class="fs">
             <option value="" data-en="Select..." data-fr="Sélectionner...">Select...</option>
             <option data-en="Valid exploitation permit" data-fr="Permis d'exploitation valide">Valid exploitation permit</option>
             <option data-en="Permit under renewal" data-fr="Permis en cours de renouvellement">Permit under renewal</option>
@@ -1210,15 +1210,15 @@ footer{background:#01082e;padding:60px 64px 32px;}
         <div class="fdiv"></div>
         <div class="f-sec-lbl" data-en="Contact" data-fr="Contact">Contact</div>
         <div class="fr2" style="margin-top:20px;">
-          <div class="fg"><label class="fl" data-en="Full name" data-fr="Nom complet">Full name</label><input type="text" class="fi" placeholder=""/></div>
-          <div class="fg"><label class="fl" data-en="Position" data-fr="Fonction">Position</label><input type="text" class="fi" data-placeholder-en="CEO, General Manager..." data-placeholder-fr="CEO, Directeur Général..." placeholder="CEO, General Manager..."/></div>
+          <div class="fg"><label class="fl" data-en="Full name" data-fr="Nom complet">Full name</label><input id="mine-name" type="text" class="fi" placeholder=""/></div>
+          <div class="fg"><label class="fl" data-en="Position" data-fr="Fonction">Position</label><input id="mine-position" type="text" class="fi" data-placeholder-en="CEO, General Manager..." data-placeholder-fr="CEO, Directeur Général..." placeholder="CEO, General Manager..."/></div>
         </div>
         <div class="fr2">
-          <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="contact@mine.com"/></div>
-          <div class="fg"><label class="fl" data-en="Phone / WhatsApp" data-fr="Téléphone / WhatsApp">Phone / WhatsApp</label><input type="tel" class="fi" placeholder="+234 xxx xxx xxxx"/></div>
+          <div class="fg"><label class="fl">Email</label><input id="mine-email" type="email" class="fi" placeholder="contact@mine.com"/></div>
+          <div class="fg"><label class="fl" data-en="Phone / WhatsApp" data-fr="Téléphone / WhatsApp">Phone / WhatsApp</label><input id="mine-phone" type="tel" class="fi" placeholder="+234 xxx xxx xxxx"/></div>
         </div>
-        <div class="fg"><label class="fl" data-en="Project description" data-fr="Description du projet">Project description</label><textarea class="fta" data-placeholder-en="Briefly describe the asset, its development stage, and your capital objective..." data-placeholder-fr="Décrivez brièvement l'actif, son stade de développement et votre objectif de capital..." placeholder="Briefly describe the asset, its development stage, and your capital objective..."></textarea></div>
-        <button class="form-submit fs-gold" onclick="showSuccess('mine')" data-en="Submit asset for evaluation →" data-fr="Soumettre l'actif pour évaluation →">Submit asset for evaluation →</button>
+        <div class="fg"><label class="fl" data-en="Project description" data-fr="Description du projet">Project description</label><textarea id="mine-desc" class="fta" data-placeholder-en="Briefly describe the asset, its development stage, and your capital objective..." data-placeholder-fr="Décrivez brièvement l'actif, son stade de développement et votre objectif de capital..." placeholder="Briefly describe the asset, its development stage, and your capital objective..."></textarea></div>
+        <button class="form-submit fs-gold" onclick="submitForm('mine')" data-en="Submit asset for evaluation →" data-fr="Soumettre l'actif pour évaluation →">Submit asset for evaluation →</button>
         <p class="form-note" data-en="100% confidential. Our team reviews all submissions within 5 business days." data-fr="100% confidentiel. Notre équipe examine toutes les soumissions sous 5 jours ouvrés.">100% confidential. Our team reviews all submissions within 5 business days.</p>
       </div>
     </div>
@@ -1254,6 +1254,30 @@ function setLang(l){
   document.querySelectorAll('input[data-placeholder-en], textarea[data-placeholder-en]').forEach(function(el){var v=el.getAttribute('data-placeholder-'+l);if(v)el.placeholder=v;});
   var ni=document.getElementById('nl-input');if(ni)ni.placeholder=l==='fr'?'votre@email.com':'your@email.com';
 }
+function getTags(wrapperId){
+  var wrap=document.getElementById(wrapperId);
+  if(!wrap)return'';
+  return Array.from(wrap.querySelectorAll('.tp.on')).map(function(el){return el.textContent.trim();}).join(', ');
+}
+function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+
+function submitForm(type){
+  var data={};
+  if(type==='investor'){
+    data={firstName:val('inv-first'),lastName:val('inv-last'),email:val('inv-email'),org:val('inv-org'),profile:val('inv-profile'),ticket:val('inv-ticket'),country:val('inv-country'),minerals:getTags('inv-minerals-wrap'),geographies:getTags('inv-geos-wrap'),message:val('inv-message')};
+  } else if(type==='offtaker'){
+    data={firstName:val('off-first'),lastName:val('off-last'),email:val('off-email'),company:val('off-company'),companyType:val('off-type'),minerals:getTags('off-minerals-wrap'),volume:val('off-volume'),horizon:val('off-horizon'),country:val('off-country'),context:val('off-context')};
+  } else if(type==='mine'){
+    data={projectName:val('mine-project'),assetType:val('mine-asset-type'),country:val('mine-country'),region:val('mine-region'),minerals:getTags('mine-minerals-wrap'),capital:val('mine-capital'),useOfFunds:val('mine-use'),permit:val('mine-permit'),name:val('mine-name'),position:val('mine-position'),email:val('mine-email'),phone:val('mine-phone'),description:val('mine-desc')};
+  } else if(type==='newsletter'){
+    data={email:val('nl-input')};
+  }
+  fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:type,data:data})})
+    .then(function(r){return r.json();})
+    .then(function(){showSuccess(type);})
+    .catch(function(){showSuccess(type);});
+}
+
 function showSuccess(type){
   var h=document.getElementById('suc-h'),p=document.getElementById('suc-p'),b=document.getElementById('suc-btn');
   var msgs={
